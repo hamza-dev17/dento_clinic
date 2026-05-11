@@ -1,0 +1,151 @@
+﻿@model Dento_Clinic.Models.ViewModels.ReportsViewModel
+
+@{
+    ViewBag.Title = "Reports";
+    <link href="~/Content/CustomCss/Report.css" rel="stylesheet" />
+}
+
+<!-- Page Header -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h2 class="display-4 text-primary">
+                <i class="fas fa-tooth"></i> Dento Reports
+            </h2>
+            <p class="lead text-muted">An overview of clinic activities and key statistics.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Report Sections -->
+<div class="container">
+    <div class="row">
+        <!-- Total Summary Section -->
+        <div class="col-lg-6 col-md-12 mb-4">
+            <div class="card shadow-lg">
+                <div class="card-header bg-info text-white">
+                    <h3 class="card-title">Total Summary</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled">
+                        <li><strong>Total Patients:</strong> @Model.TotalPatients</li>
+                        <li><strong>Total Appointments:</strong> @Model.TotalAppointments</li>
+                        <li><strong>Total Treatments:</strong> @Model.TotalTreatments</li>
+                        <li><strong>Total Payments:</strong> @Model.TotalPayments</li>
+                        <li><strong>Total Pending Payments:</strong> @Model.TotalPendingPayments</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Appointments Section -->
+        <div class="col-lg-6 col-md-12 mb-4">
+            <div class="card shadow-lg">
+                <div class="card-header bg-success text-white">
+                    <h3 class="card-title">Recent Appointments</h3>
+                </div>
+                <div class="card-body">
+                    @if (Model.RecentAppointments.Any())
+                    {
+                        <table class="table table-hover">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>Appointment Date</th>
+                                    <th>Patient</th>
+                                    <th>Dentist</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var appointment in Model.RecentAppointments)
+                                {
+                                    <tr>
+                                        <td>@appointment.AppointmentDate.ToString("MMM dd, yyyy")</td>
+                                        <td>@appointment.PatientId</td>
+                                        <td>@appointment.DentistId</td>
+                                        <td>@appointment.Status</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <p>No recent appointments available.</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Action Buttons Section -->
+    <div class="row mt-4">
+        <div class="col-12 text-center">
+            <a href="@Url.Action("DownloadReportAsCsv", "Reports")" class="btn btn-success btn-lg mx-3">Download CSV</a>
+            <a href="@Url.Action("Edit", "Reports")" class="btn btn-primary btn-lg mx-3">Edit Report</a>
+        </div>
+    </div>
+</div>
+
+<!-- SB Admin 2 Chart Section -->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="card-title">Visual Data Representation</h3>
+                </div>
+                <div class="card-body">
+                    <canvas id="myAreaChart" width="100" height="300"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var ctx = document.getElementById('myAreaChart').getContext('2d');
+            var myLineChart = new Chart(ctx, {
+                type: 'line',  // Using Line Chart as per SB Admin 2 example
+                data: {
+                    labels: ['Patients', 'Appointments', 'Treatments'], // Labels for x-axis
+                    datasets: [{
+                        label: 'Statistics',
+                        data: [@Model.TotalPatients, @Model.TotalAppointments, @Model.TotalTreatments], // Replace with your model data
+                        backgroundColor: 'rgba(0, 123, 255, 0.2)', // Light blue background
+                        borderColor: 'rgba(0, 123, 255, 1)', // Blue border
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            beginAtZero: true
+                        },
+                        y: {
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(tooltipItem) {
+                                    return tooltipItem.dataset.label + ': ' + tooltipItem.raw.toFixed(0); // Show whole numbers in tooltip
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+

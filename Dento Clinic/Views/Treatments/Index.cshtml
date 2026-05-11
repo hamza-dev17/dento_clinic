@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Dento_Clinic.Models.Entity.Treatment>
+
+@{
+    ViewBag.Title = "Treatments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <!-- Card for the header -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h3>Treatments</h3>
+        </div>
+        <div class="card-body">
+            <p>
+                @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+            </p>
+
+            <!-- Table to display data -->
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered" id="myTable">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.TreatmentId)</th> <!-- TreatmentId column -->
+                            <th>@Html.DisplayNameFor(model => model.AppointmentId)</th> <!-- AppointmentId column -->
+                            <th>@Html.DisplayNameFor(model => model.TreatmentDetails)</th> <!-- TreatmentDetails column -->
+                            <th>@Html.DisplayNameFor(model => model.Cost)</th> <!-- Cost column -->
+                            <th>@Html.DisplayNameFor(model => model.TreatmentDate)</th> <!-- TreatmentDate column -->
+                            <th>@Html.DisplayNameFor(model => model.Appointment.Status)</th> <!-- Appointment.Status column -->
+                            <th style="text-align:center;">Actions</th> <!-- Actions column -->
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.TreatmentId)</td> <!-- Display TreatmentId -->
+                                <td>@Html.DisplayFor(modelItem => item.AppointmentId)</td> <!-- Display AppointmentId -->
+                                <td>@Html.DisplayFor(modelItem => item.TreatmentDetails)</td> <!-- Display TreatmentDetails -->
+                                <td>@Html.DisplayFor(modelItem => item.Cost)</td> <!-- Display Cost -->
+                                <td>@Html.DisplayFor(modelItem => item.TreatmentDate)</td> <!-- Display TreatmentDate -->
+                                <td>@Html.DisplayFor(modelItem => item.Appointment.Status)</td> <!-- Display Appointment.Status -->
+                                <td style="text-align:center;">
+                                    @Html.ActionLink("Update", "Edit", new { id = item.TreatmentId }, new { @class = "btn btn-success btn-sm", title = "Edit Treatment" }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.TreatmentId }, new { @class = "btn btn-danger btn-sm", title = "Delete Treatment" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--DataTable JavaScript Partial View -->
+@Html.Partial("DataTableScript")

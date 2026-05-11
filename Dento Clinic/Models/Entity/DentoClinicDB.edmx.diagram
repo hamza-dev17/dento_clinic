@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5fe0f73844844cb0b284124c858d8efd" Name="Diagram1">
+        <EntityTypeShape EntityType="DentalClinicDBModel.Appointment" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="DentalClinicDBModel.Dentist" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DentalClinicDBModel.Patient" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DentalClinicDBModel.Payment" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DentalClinicDBModel.sysdiagram" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DentalClinicDBModel.Treatment" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DentalClinicDBModel.User" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
+        <AssociationConnector Association="DentalClinicDBModel.FK__Appointme__Denti__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="DentalClinicDBModel.FK__Appointme__Patie__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="DentalClinicDBModel.FK__Payments__Appoin__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="DentalClinicDBModel.FK__Treatment__Appoi__46E78A0C" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

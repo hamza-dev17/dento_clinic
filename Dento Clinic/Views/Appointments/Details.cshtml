@@ -1,0 +1,59 @@
+﻿@model Dento_Clinic.Models.Entity.Appointment
+
+@{
+    ViewBag.Title = "Appointment Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="card shadow">
+        <!--  Header -->
+        <div class="card-header d-flex align-items-center justify-content-between" style="background: linear-gradient(135deg, #1e3c72, #2a5298); color: white;">
+            <div class="d-flex align-items-center">
+                <!-- Icon for the header -->
+                <i class="fas fa-info-circle"></i>
+                <h4 class="mb-0" style="font-size: 1.5rem; font-weight: 600;">Appointment Details</h4>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <!-- Appointment Date -->
+                <div class="col-12 mb-2">
+                    <strong>Appointment Date :</strong> @Html.DisplayFor(model => model.AppointmentDate)
+                    <hr />
+                </div>
+
+                <!-- Appointment Time -->
+                <div class="col-12 mb-2">
+                    <strong>Appointment Time :</strong> @Html.DisplayFor(model => model.AppointmentTime)
+                    <hr />
+                </div>
+
+                <!-- Status -->
+                <div class="col-12 mb-2">
+                    <strong>Status :</strong> @Html.DisplayFor(model => model.Status)
+                    <hr />
+                </div>
+
+                <!-- Dentist Name -->
+                <div class="col-12 mb-2">
+                    <strong>Dentist Name :</strong> @Html.DisplayFor(model => model.Dentist.Name)
+                    <hr />
+                </div>
+
+                <!-- Patient Name -->
+                <div class="col-12 mb-2">
+                    <strong>Patient Name :</strong> @Html.DisplayFor(model => model.Patient.Name)
+                </div>
+            </div>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+            <a href="@Url.Action("Edit", "Appointments", new { id = Model.AppointmentId })" class="btn btn-info">
+                <i class="fas fa-edit"></i> Update
+            </a>
+            <a href="@Url.Action("Index")" class="btn btn-outline-secondary">
+                <i class="fas fa-arrow-left "></i> Back to List
+            </a>
+        </div>
+    </div>
+</div>

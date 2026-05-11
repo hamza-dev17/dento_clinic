@@ -1,0 +1,132 @@
+﻿@model Dento_Clinic.Models.ViewModels.DashboardViewModel
+
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/CustomCss/Dashboard.css" rel="stylesheet" />
+}
+
+
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">
+            <i class="fas fa-tooth"></i> Dashboard
+        </h1>
+        <a href="/Reports/Index" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <i class="fas fa-download fa-sm text-white-50"></i> Generate Report
+        </a>
+    </div>
+
+    <!-- Content Row -->
+    <div class="row">
+
+        <!-- Total Patients -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2 dashboard-card">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Patients</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.TotalPatients</div>
+                            <div class="text-muted">Total number of registered patients</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-users fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Active Treatments -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-danger shadow h-100 py-2 dashboard-card">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Active Treatments</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.ActiveTreatments</div>
+                            <div class="text-muted">Treatments currently in progress</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-procedures fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Appointments Today -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2 dashboard-card">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Appointments Today</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.AppointmentsToday</div>
+                            <div class="text-muted">Appointments scheduled for today</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calendar-day fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pending Payments -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2 dashboard-card">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Payments</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">$@Model.PendingPayments</div>
+                            <div class="text-muted">Pending payments for incomplete appointments</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-credit-card fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Recent Activities Section -->
+    <div class="row">
+        <div class="col-xl-12 col-md-12 mb-4">
+            <div class="card shadow h-100 py-2">
+                <div class="card-body">
+                    <h5 class="text-gray-800 mb-3">Recent Activities</h5>
+                    @if (Model.RecentActivities != null && Model.RecentActivities.Any())
+                    {
+                        <div class="list-group">
+                            @foreach (var activity in Model.RecentActivities)
+                            {
+                                <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center recent-activity-item">
+                                    <span>@activity.Activity</span>
+                                    <span class="badge badge-pill @activity.BadgeClass">@activity.TimeAgo</span>
+                                </a>
+                            }
+                        </div>
+                        <div class="text-center mt-3">
+                            <button class="btn btn-outline-primary" id="showMoreActivities" onclick="toggleActivities()">
+                                Show More <i class="fas fa-angle-down"></i>
+                            </button>
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-muted">No recent activities available</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

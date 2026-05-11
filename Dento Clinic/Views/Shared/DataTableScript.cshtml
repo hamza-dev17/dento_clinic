@@ -1,0 +1,27 @@
+﻿<script type="text/javascript">
+    var js = jQuery.noConflict(true);
+    js(document).ready(function () {
+        js('#myTable').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,     // Enable sorting
+            "info": true,         // Show info (entries being shown)
+            "lengthMenu": [5, 10, 25, 50, 75, 100], // Options for entries per page
+            "pageLength": 5,     // Default number of entries per page
+            "language": {
+                "lengthMenu": "Show _MENU_ entries per page", // Customize the 'entries per page' text
+                "zeroRecords": "No records found",
+                "info": "Showing _START_ to _END_ of _TOTAL_ entries",
+                "infoEmpty": "No records available",
+                "infoFiltered": "(filtered from _MAX_ total entries)",
+                "search": "Search: ",
+                "paginate": {
+                    "previous": "Previous", // Custom label for 'Previous'
+                    "next": "Next"          // Custom label for 'Next'
+                }
+            }
+        });
+    });
+</script>
+
