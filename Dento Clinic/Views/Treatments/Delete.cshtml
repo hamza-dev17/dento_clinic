@@ -1,0 +1,54 @@
+﻿@model Dento_Clinic.Models.Entity.Treatment
+
+@{
+    ViewBag.Title = "Delete Treatment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/CustomCss/delete.css" rel="stylesheet" />
+}
+
+<div class="container mt-5">
+
+    <!-- Treatment Details Section -->
+    <div class="treatment-details">
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <h4>Treatment Information</h4>
+                <hr />
+                <dl class="row">
+                    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.TreatmentDetails)</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.TreatmentDetails)</dd>
+
+                    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Cost)</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.Cost)</dd>
+
+                    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.TreatmentDate)</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.TreatmentDate)</dd>
+
+                    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Appointment.Status)</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.Appointment.Status)</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Button triggering SweetAlert -->
+    <div class="mt-4">
+        <button type="button" class="btn btn-danger" onclick="confirmDelete()">
+            <i class="fas fa-trash"></i> Delete Treatment
+        </button>
+        <a href="@Url.Action("Index", "Treatments")" class="btn btn-secondary">
+            <i class="fas fa-times"></i> Cancel
+        </a>
+    </div>
+
+    <!-- Form for Deletion (hidden) -->
+    @using (Html.BeginForm("DeleteConfirmed", "Treatments", FormMethod.Post, new { id = "deleteForm" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.TreatmentId)
+    }
+
+</div>
+
+<!-- SweetAlert Script PartialView-->
+@Html.Partial("SweetAlert")

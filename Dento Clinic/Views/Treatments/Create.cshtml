@@ -1,0 +1,66 @@
+﻿@model Dento_Clinic.Models.Entity.Treatment
+
+@{
+    ViewBag.Title = "Create Treatment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="card shadow">
+        <!-- Header -->
+        <div class="card-header d-flex align-items-center justify-content-between" style="background: linear-gradient(135deg, #1e3c72, #2a5298); color: white;">
+            <div class="d-flex align-items-center">
+                <!-- Icon for the header -->
+                <i class="fas fa-stethoscope mr-2"></i>
+                <h4 class="mb-0" style="font-size: 1.5rem; font-weight: 600;">Create Treatment</h4>
+            </div>
+        </div>
+
+        <!-- Body -->
+        <div class="card-body">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+
+                <!-- Appointment ID Field -->
+                <div class="form-group mb-3">
+                    @Html.LabelFor(model => model.AppointmentId, "Appointment Time", htmlAttributes: new { @class = "form-label" })
+                    @Html.DropDownListFor(model => model.AppointmentId, (SelectList)ViewBag.AppointmentId, "Select an Appointment", new { @class = "form-control", @title = "Choose an appointment time" })
+                    @Html.ValidationMessageFor(model => model.AppointmentId, "", new { @class = "text-danger" })
+                </div>
+
+                <!-- Treatment Details Field -->
+                <div class="form-group mb-3">
+                    @Html.LabelFor(model => model.TreatmentDetails, "Treatment Details", htmlAttributes: new { @class = "form-label" })
+                    @Html.EditorFor(model => model.TreatmentDetails, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter treatment details" } })
+                    @Html.ValidationMessageFor(model => model.TreatmentDetails, "", new { @class = "text-danger" })
+                </div>
+
+                <!-- Cost Field -->
+                <div class="form-group mb-3">
+                    @Html.LabelFor(model => model.Cost, "Cost", htmlAttributes: new { @class = "form-label" })
+                    @Html.EditorFor(model => model.Cost, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter treatment cost" } })
+                    @Html.ValidationMessageFor(model => model.Cost, "", new { @class = "text-danger" })
+                </div>
+
+                <!-- Treatment Date Field -->
+                <div class="form-group mb-3">
+                    @Html.LabelFor(model => model.TreatmentDate, "Treatment Date", htmlAttributes: new { @class = "form-label" })
+                    @Html.EditorFor(model => model.TreatmentDate, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                    @Html.ValidationMessageFor(model => model.TreatmentDate, "", new { @class = "text-danger" })
+                </div>
+
+                <!-- Buttons -->
+                <div class="d-flex justify-content-between mt-4">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Create
+                    </button>
+                    <a href="@Url.Action("Index")" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-left"></i> Back to List
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</div>

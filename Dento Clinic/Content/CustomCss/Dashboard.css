@@ -1,0 +1,90 @@
+﻿/* Card hover effect */
+.dashboard-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    border-radius: 15px; /* Rounded corners for the card */
+}
+
+    .dashboard-card:hover {
+        transform: translateY(-10px) !important; /* Moves the card up by 10px */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important; /* Adds shadow for lift effect */
+        cursor: pointer; /* Add cursor pointer for better UX */
+    }
+
+/* Badge Styling */
+.badge {
+    font-size: 0.85rem;
+    padding: 0.4em 0.6em;
+    border-radius: 15px; /* Rounded corners for badges */
+}
+
+.badge-pill {
+    font-weight: 500;
+}
+
+/* Time-based Badge Classes */
+.badge-info {
+    background-color: #17a2b8; /* Light Blue - For "Just now" */
+    color: #fff;
+}
+
+.badge-success {
+    background-color: #28a745; /* Green - For "Minutes ago" */
+    color: #fff;
+}
+
+.badge-warning {
+    background-color: #ffc107; /* Yellow/Orange - For "Hours ago" */
+    color: #fff;
+}
+
+.badge-secondary {
+    background-color: #6c757d; /* Grey - For "Days ago" */
+    color: #fff;
+}
+
+/* Recent Activity Item Hover Effect */
+.recent-activity-item {
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 10px; /* Rounded corners for activity items */
+}
+
+    .recent-activity-item:hover {
+        background-color: #f8f9fc;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+/* Show More Button Styling */
+.btn-outline-primary {
+    transition: background-color 0.3s, color 0.3s;
+    font-weight: bold;
+    border-radius: 20px; /* Rounded corners for the button */
+}
+
+    .btn-outline-primary:hover {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+/* Adjust List Group Items for Activities */
+.list-group-item {
+    border: none;
+    padding: 0.75rem 1.25rem;
+    border-radius: 10px; /* Rounded corners for list items */
+}
+
+/* Section Header Styling */
+.card-body h5 {
+    font-weight: bold;
+    color: #4e73df;
+}
+
+/* Styling for Generate Report Button */
+a.d-none.d-sm-inline-block.btn.btn-sm.btn-primary.shadow-sm {
+    border-radius: 20px; /* Rounded corners for the Generate Report button */
+    padding: 10px 20px; /* Adjust padding for a better button shape */
+}
+
+/* Styling for Recent Activities Container */
+.card.shadow.h-100.py-2 {
+    border-radius: 20px; /* Rounded corners for the entire Recent Activities container */
+}

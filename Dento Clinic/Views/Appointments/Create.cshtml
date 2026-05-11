@@ -1,0 +1,66 @@
+﻿@model Dento_Clinic.Models.Entity.Appointment
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="card shadow">
+        <!--  Header -->
+        <div class="card-header d-flex align-items-center justify-content-between" style="background: linear-gradient(135deg, #1e3c72, #2a5298); color: white;">
+            <div class="d-flex align-items-center">
+                <!-- Icon for the header -->
+                <i class="fas fa-credit-card mr-2"></i>
+                <h4 class="mb-0" style="font-size: 1.5rem; font-weight: 600;">Create Appointment</h4>
+            </div>
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+
+                <div class="form-group mb-3">
+                    @Html.LabelFor(model => model.PatientId, "Patient", htmlAttributes: new { @class = "form-label" })
+                    @Html.DropDownList("PatientId", null, "Select a Patient", new { @class = "form-control", @title = "Choose the patient for the appointment" })
+                    @Html.ValidationMessageFor(model => model.PatientId, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group mb-3">
+                    @Html.LabelFor(model => model.DentistId, "Dentist", htmlAttributes: new { @class = "form-label" })
+                    @Html.DropDownList("DentistId", null, "Select a Dentist", new { @class = "form-control", @title = "Choose the dentist for the appointment" })
+                    @Html.ValidationMessageFor(model => model.DentistId, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group mb-3">
+                    @Html.LabelFor(model => model.AppointmentDate, "Date", htmlAttributes: new { @class = "form-label" })
+                    <input type="date" class="form-control" id="AppointmentDate" name="AppointmentDate" />
+                    @Html.ValidationMessageFor(model => model.AppointmentDate, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group mb-3">
+                    @Html.LabelFor(model => model.AppointmentTime, "Time", htmlAttributes: new { @class = "form-label" })
+                    <input type="time" class="form-control" id="AppointmentTime" name="AppointmentTime" />
+                    @Html.ValidationMessageFor(model => model.AppointmentTime, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group mb-3">
+                    @Html.LabelFor(model => model.Status, "Status", htmlAttributes: new { @class = "form-label" })
+                    @Html.DropDownListFor(model => model.Status, new SelectList(new[] { "Pending", "Completed", "Cancelled" }), "Select Status", new { @class = "form-control", @title = "Set the current status of the appointment" })
+                    @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="d-flex justify-content-between mt-4">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Create
+                    </button>
+                    <a href="@Url.Action("Index")" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-left "></i> Back to List
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</div>

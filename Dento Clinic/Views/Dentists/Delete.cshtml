@@ -1,0 +1,53 @@
+﻿@model Dento_Clinic.Models.Entity.Dentist
+
+@{
+    ViewBag.Title = "Delete Dentist";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/CustomCss/delete.css" rel="stylesheet" />
+}
+
+<div class="container mt-5">
+    <!-- Dentist Details Section -->
+    <div class="appointment-details">
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <h4>Dentist Information</h4>
+                <hr />
+                <dl class="row">
+                    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Name)</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.Name)</dd>
+
+                    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Specialization)</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.Specialization)</dd>
+
+                    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Phone)</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.Phone)</dd>
+
+                    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Email)</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.Email)</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <!-- Delete Button triggering SweetAlert -->
+        <button type="button" class="btn btn-danger" onclick="confirmDelete()">
+            <i class="fas fa-trash"></i> Delete Dentist
+        </button>
+        <a href="@Url.Action("Index", "Dentists")" class="btn btn-secondary">
+            <i class="fas fa-times"></i> Cancel
+        </a>
+    </div>
+
+    <!-- Form for Deletion (hidden) -->
+    @using (Html.BeginForm("DeleteConfirmed", "Dentists", FormMethod.Post, new { id = "deleteForm" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.DentistId)
+    }
+
+</div>
+
+<!-- SweetAlert Script PartialView-->
+@Html.Partial("SweetAlert")

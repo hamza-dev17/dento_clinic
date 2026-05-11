@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <title>Dento Clinic</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/Content/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/css/animate.css">
+
+    <link rel="stylesheet" href="~/Content/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Content/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/Content/css/magnific-popup.css">
+
+    <link rel="stylesheet" href="~/Content/css/aos.css">
+
+    <link rel="stylesheet" href="~/Content/css/ionicons.min.css">
+
+    <link rel="stylesheet" href="~/Content/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="~/Content/css/jquery.timepicker.css">
+
+
+    <link rel="stylesheet" href="~/Content/css/flaticon.css">
+    <link rel="stylesheet" href="~/Content/css/icomoon.css">
+    <link rel="stylesheet" href="~/Content/css/style.css">
+
+    <!-- Include FontAwesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <!--Nav-->
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Dento<span>Clinic</span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a href="/Website/Index" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="/Website/About" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="/Website/services" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="/Website/Contact" class="nav-link">Contact</a></li>
+                    <li class="nav-item cta"><a href="/Account/Login" class="nav-link"><span>Sign in</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    <!-- Begin of Main Content -->
+    <div>
+        @RenderBody()
+    </div>
+    <!-- End of Main Content -->
+    <!--Footer-->
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
+        <div class="container">
+            <div class="row mb-5">
+                <!-- About Section -->
+                <div class="col-md-4">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">Dento Clinic</h2>
+                        <p>Providing exceptional dental care in a friendly, comfortable, and modern environment. Your smile is our priority.</p>
+                    </div>
+                    <ul class="ftco-footer-social list-unstyled">
+                        <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                        <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                        <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                        <li class="ftco-animate"><a href="#"><span class="icon-linkedin"></span></a></li>
+                    </ul>
+                </div>
+                <!-- Quick Links -->
+                <div class="col-md-3">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">Quick Links</h2>
+                        <ul class="list-unstyled">
+                            <li><a href="/Website/About" class="py-2 d-block">About Us</a></li>
+                            <li><a href="/Website/Services" class="py-2 d-block">Services</a></li>
+                            <li><a href="/Website/Appointments" class="py-2 d-block">Book an Appointment</a></li>
+                            <li><a href="/Website/Contact" class="py-2 d-block">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Office Details -->
+                <div class="col-md-5">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">Contact Us</h2>
+                        <div class="block-23 mb-3">
+                            <ul>
+                                <li><span class="icon icon-map-marker"></span><span class="text">15 temmuz mah 148051 sk no:9 Sehitkamil,Gaziantep </span></li>
+                                <li><a href="tel:+1234567890"><span class="icon icon-phone"></span><span class="text">+905345460964</span></a></li>
+                                <li><a href="mailto:info@dentoclinic.com"><span class="icon icon-envelope"></span><span class="text">info@dentoclinic.com</span></a></li>
+                                <li><span class="icon icon-clock-o"></span><span class="text">Mon - Fri: 8:00 AM - 5:00 PM</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Footer Credits -->
+                <div class="col-md-12 text-center">
+                    <p>
+                        &copy;
+                        <script>document.write(new Date().getFullYear());</script> Dento Clinic. All rights reserved.
+                        Designed with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://yourwebsite.com" target="_blank">Hamza Abdi</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--End of footer-->
+    <!--Scripts-->
+    <script src="~/Content/js/jquery.min.js"></script>
+    <script src="~/Content/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="~/Content/js/popper.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/jquery.easing.1.3.js"></script>
+    <script src="~/Content/js/jquery.waypoints.min.js"></script>
+    <script src="~/Content/js/jquery.stellar.min.js"></script>
+    <script src="~/Content/js/owl.carousel.min.js"></script>
+    <script src="~/Content/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/Content/js/aos.js"></script>
+    <script src="~/Content/js/jquery.animateNumber.min.js"></script>
+    <script src="~/Content/js/bootstrap-datepicker.js"></script>
+    <script src="~/Content/js/jquery.timepicker.min.js"></script>
+    <script src="~/Content/js/scrollax.min.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDkRFXKBJa0_oiZHhpZb01I5xxWKkFZNo&callback=initMap"></script>
+    <script src="~/Content/js/google-map.js"></script>
+    <script src="~/Content/js/main.js"></script>
+</body>
+</html>
